@@ -1,4 +1,6 @@
-import material from "@primeuix/themes/material"
+import Nora from "@primeuix/themes/nora"
+import PrimeUI from "tailwindcss-primeui";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
@@ -8,11 +10,19 @@ export default defineNuxtConfig({
   primevue: {
     options: {
       theme: {
-        preset: material
+        preset: Nora,
+        cssLayer: {
+          name: 'primevue',
+          order: 'theme, base, primevue'
+        }
       }
     }
   },
   tailwindcss: {
+    quiet: true,
+    config: {
+      plugins: [PrimeUI]
+    },
     exposeConfig: true,
     viewer: true,
   }
